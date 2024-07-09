@@ -1,0 +1,189 @@
+﻿@page "/"
+@using DotNetChartJS.Components.Displays
+@using DotNetChartJS.Models
+@rendermode InteractiveServer
+
+<PageTitle>Home</PageTitle>
+
+<h1>Hello world from Chart.JS!</h1>
+<h2>This project is initiated to test the integration of Chart.js within a .NET Blazor Web Application.<br/>The goal is to evaluate the capabilities and performance of Chart.js when used in conjunction with Blazor for creating interactive and dynamic charts.</h2>
+
+<ChartDisplay Data="@_mockData[0]" />
+<ChartDisplay Data="@_mockData[1]" />
+<ChartDisplay Data="@_mockData[2]" />
+<ChartDisplay Data="@_mockData[3]" />
+<ChartDisplay Data="@_mockData[4]" />
+<ChartDisplay Data="@_mockData[5]" />
+<ChartDisplay Data="@_mockData[6]" />
+<ChartDisplay Data="@_mockData[7]" />
+<ChartDisplay Data="@_mockData[8]" />
+
+@code {
+    private List<ChartModel> _mockData = new List<ChartModel>
+    {
+        new ChartModel
+        {
+            TypeEnum = ChartModel.ChartTypes.bar,
+            label = "Sales",
+            chartId = "chart1",
+            labels = new[] { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" },
+            datasets = new[]
+            {
+                new ChartModel.ChartDataset
+                {
+                    label = "2023 Sales",
+                    data = new[] { 150, 200, 250, 300, 350, 400, 450, 500, 550, 600, 650, 700 },
+                    backgroundColor = new[] { "#FF0000", "#0000FF", "#008000", "#FFFF00", "#800080", "#FFA500", "#FFC0CB", "#00FFFF", "#FF00FF", "#A52A2A", "#808080", "#000000" }
+                }
+            }
+        },
+        new ChartModel
+        {
+            TypeEnum = ChartModel.ChartTypes.line,
+            label = "Revenue",
+            chartId = "chart2",
+            labels = new[] { "Week 1", "Week 2", "Week 3", "Week 4", "Week 5", "Week 6", "Week 7", "Week 8", "Week 9", "Week 10", "Week 11", "Week 12" },
+            datasets = new[]
+            {
+                new ChartModel.ChartDataset
+                {
+                    label = "2023 Revenue",
+                    data = new[] { 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1300, 1400 },
+                    backgroundColor = new[] { "#FFFF00", "#800080", "#FFA500", "#FFC0CB", "#00FFFF", "#FF00FF", "#A52A2A", "#808080", "#000000", "#ADD8E6", "#90EE90", "#F08080" }
+                }
+            }
+        },
+        new ChartModel
+        {
+            TypeEnum = ChartModel.ChartTypes.pie,
+            label = "Market Share",
+            chartId = "chart3",
+            labels = new[] { "Product A", "Product B", "Product C", "Product D", "Product E" },
+            datasets = new[]
+            {
+                new ChartModel.ChartDataset
+                {
+                    label = "2023 Market Share",
+                    data = new[] { 40, 30, 20, 5, 5 },
+                    backgroundColor = new[] { "#FFC0CB", "#00FFFF", "#FF00FF", "#ADD8E6", "#90EE90" }
+                }
+            }
+        },
+        new ChartModel
+        {
+            TypeEnum = ChartModel.ChartTypes.doughnut,
+            label = "Expenses",
+            chartId = "chart4",
+            labels = new[] { "Rent", "Utilities", "Salaries", "Marketing", "R&D", "Miscellaneous" },
+            datasets = new[]
+            {
+                new ChartModel.ChartDataset
+                {
+                    label = "2023 Expenses",
+                    data = new[] { 1000, 500, 1500, 300, 200, 100 },
+                    backgroundColor = new[] { "#A52A2A", "#808080", "#000000", "#FFFF00", "#800080", "#FFA500" }
+                }
+            }
+        },
+        new ChartModel
+        {
+            TypeEnum = ChartModel.ChartTypes.radar,
+            label = "Performance",
+            chartId = "chart5",
+            labels = new[] { "Speed", "Quality", "Efficiency", "Innovation", "Customer Satisfaction" },
+            datasets = new[]
+            {
+                new ChartModel.ChartDataset
+                {
+                    label = "2023 Performance",
+                    data = new[] { 12, 45, 37,23, 73 },
+                    backgroundColor = new[] { "#ADD8E6", "#90EE90", "#F08080", "#FFFFE0", "#E6E6FA" }
+                },
+                new ChartModel.ChartDataset
+                {
+                    label = "2022 Performance",
+                    data = new[] { 45, 55, 70, 55, 95 },
+                    backgroundColor = new[] { "#0000FF", "#008000", "#FF7F50", "#FFFF00", "#800080" }
+                },
+                new ChartModel.ChartDataset
+                {
+                    label = "2021 Performance",
+                    data = new[] { 70, 80, 75, 60, 85 },
+                    backgroundColor = new[] { "#00008B", "#006400", "#FF4500", "#FFD700", "#4B0082" }
+                }
+            }
+        },
+        new ChartModel
+        {
+            TypeEnum = ChartModel.ChartTypes.polarArea,
+            label = "Distribution",
+            chartId = "chart6",
+            labels = new[] { "North", "South", "East", "West", "Central" },
+            datasets = new[]
+            {
+                new ChartModel.ChartDataset
+                {
+                    label = "2023 Distribution",
+                    data = new[] { 25, 25, 25, 15, 10 },
+                    backgroundColor = new[] { "#000080", "#008080", "#808000", "#800000", "#006400" }
+                }
+            }
+        },
+        new ChartModel
+        {
+            TypeEnum = ChartModel.ChartTypes.bubble,
+            label = "Growth",
+            chartId = "chart7",
+            labels = new[] { "Q1", "Q2", "Q3", "Q4" },
+            datasets = new[]
+            {
+                new ChartModel.ChartDataset
+                {
+                    label = "2023 Growth",
+                    dataBubble = new[] { new ChartModel.ChartDataset.BubbleData { x = 10, y = 20, r = 30 }, new ChartModel.ChartDataset.BubbleData { x = 15, y = 25, r = 35 }, new ChartModel.ChartDataset.BubbleData { x = 20, y = 30, r = 40 }, new ChartModel.ChartDataset.BubbleData { x = 25, y = 35, r = 45 } },
+                 backgroundColor = new[] { "#FFD700", "#C0C0C0", "#CD7F32", "#E5E4E2" }
+                }
+            }
+        },
+        new ChartModel
+        {
+            TypeEnum = ChartModel.ChartTypes.scatter,
+            label = "Trends",
+            chartId = "chart8",
+            labels = new[] { "Week 1", "Week 2", "Week 3", "Week 4", "Week 5", "Week 6", "Week 7", "Week 8", "Week 9", "Week 10" },
+            datasets = new[]
+            {
+                new ChartModel.ChartDataset
+                {
+                    label = "2023 Trends",
+                    dataScatter = new[] { new ChartModel.ChartDataset.ScatterData { x = 10, y = 20 }, new ChartModel.ChartDataset.ScatterData { x = 15, y = 25 }, new ChartModel.ChartDataset.ScatterData { x = 20, y = 30 }, new ChartModel.ChartDataset.ScatterData { x = 25, y = 35 }, new ChartModel.ChartDataset.ScatterData { x = 30, y = 40 }, new ChartModel.ChartDataset.ScatterData { x = 35, y = 45 }, new ChartModel.ChartDataset.ScatterData { x = 40, y = 50 }, new ChartModel.ChartDataset.ScatterData { x = 45, y = 55 }, new ChartModel.ChartDataset.ScatterData { x = 50, y = 60 }, new ChartModel.ChartDataset.ScatterData { x = 55, y = 65 } },
+                    backgroundColor = new[] { "#DC143C", "#4B0082", "#00FF00", "#00FFFF", "#000080", "#008080", "#808000", "#800000", "#006400", "#8B0000" }
+                }
+            }
+        },
+            new ChartModel
+        {
+            TypeEnum = ChartModel.ChartTypes.mixed,
+            label = "Performance",
+            chartId = "chart9",
+            labels = new[] { "Speed", "Quality", "Efficiency", "Innovation", "Customer Satisfaction" },
+            datasets = new[]
+            {
+                new ChartModel.ChartDataset
+                {
+                    type = "bar",
+                    label = "2023 Performance",
+                    data = new[] { 12, 45, 37,23, 73 },
+                    backgroundColor = new[] { "#ADD8E6", "#90EE90", "#F08080", "#FFFFE0", "#E6E6FA" }
+                },
+                new ChartModel.ChartDataset
+                {
+                     type = "line",
+                    label = "2022 Performance",
+                    data = new[] { 45, 55, 70, 55, 95 },
+                    backgroundColor = new[] { "#0000FF", "#008000", "#FF7F50", "#FFFF00", "#800080" }
+                },
+            }
+        },
+    };
+}

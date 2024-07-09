@@ -1,0 +1,49 @@
+﻿@using DotNetChartJS.Models
+@using System.Text.Json
+
+@inject IJSRuntime JS
+
+<div class="card">
+    <h5 class="card-title">
+        <span> @Data?.label</span>,
+        <span> @Data?.TypeEnum</span>
+    </h5>
+  
+   <div class="card-body">
+        <canvas id="@_canvasId">
+        </canvas>
+   </div>
+</div>
+
+@code {
+    [Parameter]
+    public ChartModel? Data { get; set; }
+
+    private string _canvasId = string.Empty;
+
+    private IJSObjectReference? _module;
+
+    protected override void OnInitialized()
+    {
+        if (Data != null)
+        {
+            _canvasId = Data.chartId;
+        }
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            var chartModelJSON = JsonSerializer.Serialize(Data);
+            await JS.InvokeVoidAsync("createChart", chartModelJSON);
+
+        }
+    }
+
+    private static string[] GenerateRandomColors(int count)
+    {
+        var random = new Random();
+        return Enumerable.Range(0, count).Select(_ => $"#{random.Next(0x1000000):X6}").ToArray();
+    }
+}
