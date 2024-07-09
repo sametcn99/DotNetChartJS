@@ -4,7 +4,7 @@ on:
     branches:
     - master
 env:
-  AZURE_WEBAPP_NAME: DotNetChartJS
+  AZURE_WEBAPP_NAME: DotNetChartJS20240710003706
   AZURE_WEBAPP_PACKAGE_PATH: .\published
   CONFIGURATION: Release
   DOTNET_CORE_VERSION: 8.0.x
